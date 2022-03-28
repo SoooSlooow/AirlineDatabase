@@ -32,6 +32,7 @@
 6) *Passenger* - информация о пассажирах:
   * *id* - идентификатор пассажира (INT);
   * *first_name* - имя (VARCHAR(20));
+  * *last_name* - фамилия (VARCHAR(20));
   * *sex* - пол ('M' - мужской, 'F' - женский);
   * *birthday* - дата рождения (DATE);
   * *passport* - серия и номер паспорта (CHAR(11)).
@@ -39,7 +40,7 @@
   * *id* - идентификатор билета (INT);
   * *flight_id* - идентфикатор рейса, на который приобретен билет (INT);
   * *class* - класс билета ('economy' - эконом, 'business' - бизнесс);
-  * *place* - номер места (VARCHAR(20));
+  * *place* - номер места (VARCHAR(3));
   * *luggage* - наличие багажа ('yes' - да, 'no' - нет).
   
 ![](https://github.com/SoooSlooow/AirlineDatabase/blob/master/diagram.png)
