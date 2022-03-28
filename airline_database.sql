@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `Passenger` (
   `last_name` VARCHAR(20) NOT NULL,
   `sex` ENUM('M', 'F') NOT NULL,
   `birthday` DATE NOT NULL,
-  `passport` VARCHAR(45) NOT NULL,
+  `passport` CHAR(11) NOT NULL,
   PRIMARY KEY (`id`));
 
 CREATE TABLE IF NOT EXISTS `Ticket` (
