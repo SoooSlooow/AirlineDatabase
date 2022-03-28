@@ -39,3 +39,35 @@
   * *class* - класс билета ('economy' - эконом, 'business' - бизнесс);
   * *place* - номер места (VARCHAR(20));
   * *luggage* - наличие багажа ('yes' - да, 'no' - нет).
+  
+![](https://github.com/SoooSlooow/AirlineDatabase/blob/master/diagram.png)
+  
+# Запросы к БД
+1) Вывести идентификатор, имя, фамилию и количество лет пребывания на должности сотрудника, имеющего второе по величине время работы в компании.
+```mysql
+SELECT id, first_name, last_name, TIMESTAMPDIFF(year, start_date, CURDATE()) worktime  
+    FROM Employee  
+    ORDER BY start_date  
+    LIMIT 1, 1;  
+```
+2) Вывести идентификатор, имя и фамилию всех мужчин, летевших в период с 23 по 24 марта:
+```mysql
+SELECT DISTINCT p.id, p.first_name, p.last_name
+    FROM Passenger p
+    INNER JOIN Ticket t
+    ON t.passenger_id = p.id
+    INNER JOIN Flight f
+    ON t.flight_id = f.id
+    WHERE f.departure_date BETWEEN '2022-03-23' AND '2022-03-24'
+        AND p.sex = 'M';
+```
+3) Вывести средний возраст пассажиров на каждом рейсе.
+```mysql
+SELECT f.id, AVG(TIMESTAMPDIFF(year, p.birthday, CURDATE())) age
+FROM Passenger p
+  INNER JOIN Ticket t
+  ON t.passenger_id = p.id
+  INNER JOIN Flight f
+  ON t.flight_id = f.id
+  GROUP BY f.id;
+```
